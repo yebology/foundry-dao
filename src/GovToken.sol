@@ -5,8 +5,15 @@ import {ERC20} from "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol"
 import {ERC20Permit} from "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import {ERC20Votes} from "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
-contract MyToken is ERC20, ERC20Permit, ERC20Votes {
-    constructor() ERC20("MyToken", "MTK") ERC20Permit("MyToken") {}
+contract GovToken is ERC20, ERC20Permit, ERC20Votes {
+    constructor() ERC20("GovToken", "MTK") ERC20Permit("GovToken") {}
+
+    function mint(
+        address _to,
+        uint256 _amount
+    ) public {
+        _mint(_to, _amount);
+    }
 
     // The following functions are overrides required by Solidity.
 
@@ -19,7 +26,7 @@ contract MyToken is ERC20, ERC20Permit, ERC20Votes {
 
     function nonces(address owner)
         public
-        view
+        virtual
         override(ERC20Permit, Nonces)
         returns (uint256)
     {

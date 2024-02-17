@@ -4,7 +4,7 @@ pragma solidity ^0.8.23;
 
 import {Ownable} from "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 
-contract Box is Ownable {
+abstract contract Box is Ownable {
     // 
     uint256 private s_number;
 
